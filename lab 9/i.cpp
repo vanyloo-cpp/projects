@@ -1,37 +1,33 @@
 #include <iostream>
-#include <vector>
+#include <set>
 #include <string>
 
 using namespace std;
 
 int main(){
     int n;
-
+    string s;
     cin >> n;
-
-    vector <string> arr(n);
-    vector <string> result;
-
+    set<string> reg_logins;
+    
+    // Ввод данных (логинов)
     for (int i = 0; i < n; i++)
     {
-        cin >> arr[i];
+        cin >> s;
+        reg_logins.insert(s);
     }
-    
+
+    // Вывод результатов
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < n; i++)
-        {
-            if(arr[i] == arr[j]){
-                result.push_back(arr[i]);
-            }
-        
-        }    
+        cin >> s;
+        if (reg_logins.find(s) == reg_logins.end()){
+            cout << "new user added" << endl;
+        }
+        else{
+            cout << "user already exists" << endl;
+        }
     }
-    
-    for (int i = 0; i < result.size(); i++)
-    {
-        cout << result[i] << endl;
-    }
-    
 
+    return 0;
 }
