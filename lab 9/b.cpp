@@ -4,38 +4,45 @@
 
 using namespace std;
 
-int main() {
+int main(){
     int n, cnt;
     cnt = 0;
 
     cin >> n;
+    vector <int> arr(n);
 
-    vector<int> arr(n);
-    vector<int> result;
+    if (n == 1)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            cin >> arr[i];
+        }
+        cout << "0";
+        return 0;
+    }
 
-    for (int i = 0; i < n; i++) {
-        cin >> arr[i];
+    for (int i = 0; i < n; i++)
+    {
+       cin >> arr[i];
+    }
 
-        if (arr[i] % 2 == 0) {
-            result.push_back(arr[i]);
+    
+
+    sort(arr.begin(), arr.end());
+
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i] == arr[i + 1])
+        {
             cnt++;
         }
-    }
-
-    for (int i = 0; i < n; i++) {
-        if (arr[i] % 2 != 0)
+        if (arr[i + 1] == arr[i + 2])
         {
-            result.push_back(arr[i]);
+            continue;
         }
         
+        
     }
-
-    sort(result.begin(), result.begin() + cnt, greater<int>());
-    sort(result.begin() + cnt, result.end());
-
-    for (int i = 0; i < result.size(); i++) {
-        cout << result[i] << " ";
-    }
-
-    return 0;
+    
+    cout << cnt;
 }
