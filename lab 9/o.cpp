@@ -5,38 +5,28 @@
 using namespace std;
 
 int main() {
-    int n;
-    string login, password;
-    cin >> n;
+    int n, m;
+    cin >> n >> m;
 
     map<string, string> reg;
 
     for (int i = 0; i < n; i++) {
+        string login, password;
         cin >> login >> password;
         reg.insert(make_pair(login, password));
     }
 
-    int m;
-    cin >> m;
-
-    multimap<string, string> sign_in;
-
     for (int i = 0; i < m; i++) {
+        string login, password;
         cin >> login >> password;
-        sign_in.insert(make_pair(login, password));
-    }
 
-    for (const auto &pair : reg) {
-        const string &login_correct = pair.first;
-        const string &password_correct = pair.second;
+        auto it = reg.find(login);
 
-        auto it = sign_in.find(login_correct);
+        if (it != reg.end()) {
+            const string &correct_password = it->second;
 
-        if (it != sign_in.end()) {
-            const string &it2 = it->second;
-
-            if (password_correct == it2) {
-                cout << "password correct";
+            if (password == correct_password) {
+                cout << "correct password";
             } else {
                 cout << "password error";
             }
