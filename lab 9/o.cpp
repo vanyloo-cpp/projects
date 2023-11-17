@@ -1,14 +1,16 @@
 #include <iostream>
-#include <map>
+#include <unordered_map>
 #include <string>
+#include <vector>
 
 using namespace std;
 
 int main() {
     int n, m;
-    cin >> n >> m;
+    cin >> n;
 
-    map<string, string> reg;
+    unordered_map<string, string> reg;
+    vector<string> results;
 
     for (int i = 0; i < n; i++) {
         string login, password;
@@ -16,6 +18,7 @@ int main() {
         reg.insert(make_pair(login, password));
     }
 
+    cin >> m;
     for (int i = 0; i < m; i++) {
         string login, password;
         cin >> login >> password;
@@ -26,15 +29,17 @@ int main() {
             const string &correct_password = it->second;
 
             if (password == correct_password) {
-                cout << "correct password";
+                results.push_back("correct password");
             } else {
-                cout << "password error";
+                results.push_back("password error");
             }
         } else {
-            cout << "login error";
+            results.push_back("login error");
         }
+    }
 
-        cout << endl;
+    for (const auto &result : results) {
+        cout << result << endl;
     }
 
     return 0;

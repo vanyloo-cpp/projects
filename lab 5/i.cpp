@@ -1,28 +1,33 @@
 #include <iostream>
+#include <unordered_set>
 #include <string>
-#include <map>
+#include <vector>
 
 using namespace std;
 
 int main() {
-    string s, t;
-    cin >> s >> t;
+    int n;
+    cin >> n;
 
-    map<char, int> sMap, tMap;
+    unordered_set<string> userSet;
+    vector <string> result;
 
-    for (size_t i = 0; i < s.length(); ++i) {
-        sMap[s[i]]++;
+    for (int i = 0; i < n; ++i) {
+        string login;
+        cin >> login;
+
+        auto ffind = userSet.insert(login);
+
+        if (ffind.second) {
+            result.push_back("new user added");
+        } else {
+            result.push_back("user already exists");
+        }
     }
 
-    for (size_t i = 0; i < t.length(); ++i) {
-        tMap[t[i]]++;
+    for(auto &element : result){
+        cout << element << endl;
+        
     }
-
-    if (sMap == tMap) {
-        cout << "YES" << endl;
-    } else {
-        cout << "NO" << endl;
-    }
-
     return 0;
 }
