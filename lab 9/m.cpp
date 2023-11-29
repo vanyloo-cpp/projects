@@ -54,7 +54,6 @@ int main(){
 
     cin >> n;
 
-    unordered_map<int, string> que;
     vector<string> res;
 
     for (int i = 0; i < n; i++)

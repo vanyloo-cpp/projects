@@ -1,8 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <unordered_map>
 #include <algorithm>
-#include <map>
 
 using namespace std;
 
@@ -11,19 +9,20 @@ int main(){
 
     cin >> n;
 
-    multimap <int, int> points;
+    vector < pair <int, int>> coordinates;
 
     for (int i = 0; i < n; i++)
     {
         cin >> x >> y;
 
-        points.insert(make_pair(x, y));
+        coordinates.push_back(make_pair(x, y));
     }
     
-    for (const auto &it : points)
-    {
+   sort(coordinates.begin(), coordinates.end());
+
+   for(auto &it : coordinates){
         cout << it.first << " " << it.second << endl;
-    }
+   }
     
 
 }
