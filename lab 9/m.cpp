@@ -1,6 +1,6 @@
 #include <iostream>
 #include <queue>
-#include <vector>
+#include <string>
 
 using namespace std;
 
@@ -8,29 +8,30 @@ int main() {
     int n;
     cin >> n;
 
-    queue<string> boysQueue;
-    vector<string> res;
+    queue<string> queueOfBoys;
 
     for (int i = 0; i < n; ++i) {
-        int type;
-        cin >> type;
+        int actionType;
+        cin >> actionType;
 
-        if (type == 1) {
-            string name;
-            cin >> name;
-            boysQueue.push(name);
-        } else if (type == 2) {
-            if (!boysQueue.empty()) {
-                res.push_back(boysQueue.front());
-                boysQueue.pop();
+        if (actionType == 1) {
+            string boyName;
+            cin >> boyName;
+            queueOfBoys.push(boyName);
+            cout << queueOfBoys.front() << endl; 
+        } else if (actionType == 2) {
+            if (!queueOfBoys.empty()) {
+                queueOfBoys.pop();
+                if (!queueOfBoys.empty()) {
+                    cout << queueOfBoys.front() << endl;
+                } else {
+                    cout << "queue is empty" << endl;
+                }
             } else {
-                res.push_back("queue is empty");
+                cout << "queue is empty" << endl;
             }
         }
     }
 
-    for (const auto &it : res) {
-        cout << it << endl;
-    }
     return 0;
 }
